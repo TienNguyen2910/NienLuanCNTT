@@ -26,7 +26,7 @@
 		</div>
 		<div class="row row2">
 			<div class="col-sm-4 ">
-				<a href="../public" class="btn btn-danger" id="title"><i class="fas fa-igloo"></i>Tien Bakery</a>
+				<a href="index.php" class="btn btn-danger" id="title"><i class="fas fa-igloo"></i>Tien Bakery</a>
 			</div>
 			<div class="col-sm-6 search-cart">
 				<div class="form">

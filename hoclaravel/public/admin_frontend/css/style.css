@@ -1,0 +1,24 @@
+/*hover mouse a*/
+*{
+	margin:0;
+	padding: 0;
+}
+.btn-add{
+	margin-bottom: 20px;
+}
+#quanly a:hover{
+	cursor: pointer;
+}
+#cot_anh{
+	width: 100px;
+}
+#nut_edit{
+	color:navy;
+}
+#nut_del {
+	color:red;
+}
+.ad-image_product{
+	min-width: 45%;
+	min-height: 45%;
+}
