@@ -47,7 +47,9 @@ Route::get('/delete-brand/{brand_id}',[BrandProductController::class,'delete_bra
 Route::get('/product',[ProductController::class,'product']); //list product
 Route::get('/add-product',[ProductController::class,'add_product']);
 Route::post('/store-product',[ProductController::class,'store_product']);
+Route::get('/product-detail/{pro_id}',[ProductController::class,'product_detail']);
+Route::post('/product-detail/{pro_id}',[ProductController::class,'store_prodetail']);
 
 Route::get('/edit-product/{product_id}',[ProductController::class,'edit_product']);
 Route::post('/edit-product/{product_id}',[ProductController::class,'update_product']);
-Route::get('/delete-product/{product_id}',[ProductController::class,'delete_brand']);
+Route::get('/delete-product/{product_id}',[ProductController::class,'delete_product']);

@@ -76,6 +76,19 @@
 							</div>
 						</div>
 					</div>
+					<div class="home-product">
+						<div class="row">
+							<div class="col-md-2">
+								<div class="home-product-item">
+									<div class="item-img" style="background-image: url('')"></div>
+									<h5 class="item-name"></h5>
+									<div class="item_origin">
+										<span class="item_origin-name"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -24,7 +24,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Tên sản phẩm</th>
-                        <th>Hình ảnh</th>
+                        <th id="col-img">Hình ảnh</th>
                         <th>Đơn giá</th>
                         <th>Số lượng tồn</th>
                         <th>Mô tả</th>
@@ -32,17 +32,19 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php  $count=1; ?>
+                    <?php $count=1; ?>
                    @foreach($list_product as $key => $cate_pro)
                     <tr>
                             <td><?php echo $count; ?></td>
-                            <td>{{$cate_pro->ten_sp}}</td>
-                            <td><img src="{{$cate_pro->hinhanh_sp}}" alt="hình ảnh sản phẩm" class="ad-image_product"></td>
-                            <td>{{$cate_pro->dongia_sp}}</td>
+                            <td><a href="{{asset('product-detail/'.$cate_pro->id_sp)}}" class="description">{{$cate_pro->ten_sp}}</a></td>
+                            <td class="img"><img src="../public/admin_frontend/img/{{$cate_pro->hinhanh_sp}}" alt="hình ảnh sản phẩm" class="ad-image_product"></td>
+                            <td>{{number_format($cate_pro->dongia_sp)}} đ</td>
                             <td>{{$cate_pro->soluong_sp}}</td>
-                            <td>{{$cate_pro->mota_sp}}</td>
-                            <td><a href="{{asset('/edit-brand/'.$cate_pro->id_th)}}" id='nut_edit'><i class='fas fa-pencil-alt'></i>Edit</a>
-                            <a onclick="return confirm('Bạn có muốn xóa thương hiệu này không!!')" href="{{asset('/delete-brand/'.$cate_pro->id_th)}}" id='nut_del'><i class='fas fa-minus-circle'></i>Delete</a></td>
+                            <td class="discreption_pro">{{$cate_pro->mota_sp}}</td>
+                            <td>
+                                <a href="{{asset('/edit-product/'.$cate_pro->id_sp)}}" id='nut_edit'><i class='fas fa-pencil-alt'></i>Edit</a>
+                                <a onclick="return confirm('Bạn có muốn xóa sản phẩm này không!!')" href="{{asset('/delete-product/'.$cate_pro->id_sp)}}" id='nut_del'><i class='fas fa-minus-circle'></i>Delete</a>
+                            </td>
                     </tr>
                         <?php  $count++; ?>
                    @endforeach

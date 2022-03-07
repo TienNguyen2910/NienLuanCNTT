@@ -6,10 +6,7 @@
 .btn-add{
 	margin-bottom: 20px;
 }
-#quanly a:hover{
-	cursor: pointer;
-}
-#cot_anh{
+#col-img{
 	width: 100px;
 }
 #nut_edit{
@@ -19,6 +16,20 @@
 	color:red;
 }
 .ad-image_product{
-	min-width: 45%;
-	min-height: 45%;
+	width: 55%;
+	height: 55%;
+}
+.img{
+	text-align: center;
+}
+.discreption_pro{
+	font-size: 14px;
+}
+.description{
+	color:#858796;
+}
+
+.description:hover{
+	text-decoration: none;
+	color:#858796;
 }
