@@ -27,6 +27,7 @@ class ProductController extends Controller
     public function store_product(Request $request){
         $data= array();
         $data['ten_sp']=$request->name_product;
+        $data['dongiagoc_sp']=$request->price_ori;
         $data['dongia_sp']=$request->price;
         $data['soluong_sp']=$request->amount;
 
@@ -107,6 +108,7 @@ class ProductController extends Controller
         if(session()->has('username_nv')){
             $data = array();
             $data['ten_sp']=$request->name_product;
+            $data['dongiagoc_sp']=$request->price_ori;
             $data['dongia_sp']=$request->price;
             $data['soluong_sp']=$request->amount;
             $data['mota_sp']=$request->desription;
@@ -116,14 +118,16 @@ class ProductController extends Controller
             $hinh->move('/admin_frontend/img/',$hinh->getClientOriginalName());
             
             $result=DB::table('sanpham')->where('id_sp',$product_id)->update($data);
+            DB::table('hinhanhmotasp')->where('id_sp',$product_id)->delete();
             $hinhmt=$request->image_des;
             foreach($hinhmt as $key => $hmt){
+                
                 $ddan=$hmt->getClientOriginalName();
                 $hmt->move('admin_frontend/img/',$ddan);
-                DB::update('update hinhanhmotasp set duongdan= ? where id_sp = ?',[$ddan,$product_id]);
+                DB::table('hinhanhmotasp')->insert(['id_sp'=>$product_id , 'duongdan' =>$ddan]);
             }
             return redirect('product');
         }
-        else return view('admin.admin_login');
+       else return view('admin.admin_login');
     }
 }

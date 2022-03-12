@@ -186,3 +186,106 @@ h5{
 	font-weight: bold;
 	font-size:12px;
 }
+
+
+.col-md-2-4{
+	width: 20%;
+}
+ /* product item */
+.home-product{
+	margin-bottom: 10px;
+}
+.home-product-item{
+	background-color: #fff;
+	display: block;
+	text-decoration: none;
+	color:black;
+	margin-top: 15px;
+	position: relative;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	box-shadow: 0 1px 2px 0 rgb(0 ,0 ,0 ,.1);
+	transition: transform linear 0.1s ; /*de khai bao co truyen dong */
+	will-change: transform;
+}
+.home-product-item:hover{
+	transform: translateY(-1px);
+	box-shadow: 0 1px 20px 0 rgb(0, 0, 0 , 0.05);
+	color:black;
+}
+.item-img{
+	padding-top: 100%;
+	background-size: contain;
+}
+
+.item-name{
+	font-size: 16px;
+	font-weight: normal;
+	margin:10px;
+	padding-right: 0px;
+	height: 2.6rem;
+	display: block;
+	display: -webkit-box;  /* xu ly tieu de nhieu hon 2 dong */
+	overflow: hidden;
+	-webkit-box-orient: vertical; 
+	-webkit-line-clamp: 2;
+}
+.item-price{
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+.item-price-old{
+	margin-left: 10px;
+	text-decoration: line-through;
+	color:#666;
+}
+.item-price-current{
+	color:red;
+	margin-left: 10px;
+}
+.item_origin{
+	text-align: right;
+	color: #666;
+	font-weight: 400;
+	font-size: 14px;
+	margin-right:10px;
+}
+
+.item_sale-off{
+	position: absolute;
+	top:0;
+	right:0;
+	width: 40px;
+	height:38px;
+	text-align: center;
+	background-color:rgba(255,212,36,.9);
+}
+.item_sale-off::after{
+	content:"";
+	position:absolute;
+	left:0;
+	bottom: -4px;
+	border-width: 0 20px 4px;
+	border-style: solid;
+	border-color: transparent rgba(255,212,36,.9) transparent rgba(255,212,36,.9);
+}
+.item-sale-off-percent{
+	color: #ee4d2d;
+	font-weight: 450;
+	font-size: 0.9rem;
+	line-height:  .8125rem;
+}
+.item-sale-off-label{
+	color:#fff;
+	font-size: 0.8rem;
+	font-weight: 550;
+	position: relative;
+	line-height: 0.7rem;
+    top: -8px;
+}
+
+/* product detail */
+/* .title-product-detail{
+	padding-right: 88px;
+	margin-bottom: 20px;
+} */

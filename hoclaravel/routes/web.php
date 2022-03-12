@@ -20,10 +20,12 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('home');
-});
+//trang chu
 
+Route::get('/',[HomeController::class,'index']);
+Route::get('/sort-low-to-high',[HomeController::class,'sort_low_to_high']);
+Route::get('/sort-high-to-low',[HomeController::class,'sort_high_to_low']);
+Route::get('/client-product-detail/{product_id}',[HomeController::class,'product_detail']);
 
 //Admin
 Route::get('/admin',[AdminController::class,'index']);

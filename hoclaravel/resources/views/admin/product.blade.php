@@ -14,7 +14,8 @@
                         <th>STT</th>
                         <th>Tên sản phẩm</th>
                         <th>Hình ảnh</th>
-                        <th>Đơn giá</th>
+                        <th>Đơn giá gốc</th>
+                        <th>Đơn giá đã giảm</th>
                         <th>Số lượng tồn</th>
                         <th>Mô tả</th>
                         <th>Hành động</th>
@@ -25,7 +26,8 @@
                         <th>STT</th>
                         <th>Tên sản phẩm</th>
                         <th id="col-img">Hình ảnh</th>
-                        <th>Đơn giá</th>
+                        <th>Đơn giá gốc</th>
+                        <th>Đơn giá đã giảm</th>
                         <th>Số lượng tồn</th>
                         <th>Mô tả</th>
                         <th>Hành động</th>
@@ -38,6 +40,7 @@
                             <td><?php echo $count; ?></td>
                             <td><a href="{{asset('product-detail/'.$cate_pro->id_sp)}}" class="description">{{$cate_pro->ten_sp}}</a></td>
                             <td class="img"><img src="../public/admin_frontend/img/{{$cate_pro->hinhanh_sp}}" alt="hình ảnh sản phẩm" class="ad-image_product"></td>
+                            <td>{{number_format($cate_pro->dongiagoc_sp)}} đ</td>
                             <td>{{number_format($cate_pro->dongia_sp)}} đ</td>
                             <td>{{$cate_pro->soluong_sp}}</td>
                             <td class="discreption_pro">{{$cate_pro->mota_sp}}</td>

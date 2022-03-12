@@ -49,7 +49,15 @@
                                </div>
                                <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <label for='gia'>Giá sản phẩm</label>
+                                        <label for='gia'>Giá gốc sản phẩm</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <input type="text" id="gia" required name="price_ori" value="{{$val->dongiagoc_sp}}"> (VNĐ)
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for='gia'>Giá giảm sản phẩm</label>
                                     </div>
                                     <div class="col-sm-6">
                                        <input type="text" id="gia" required name="price" value="{{$val->dongia_sp}}"> (VNĐ)
