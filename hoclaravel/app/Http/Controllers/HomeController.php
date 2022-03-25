@@ -11,19 +11,19 @@ class HomeController extends Controller
     public function index(){
         $list_brands=DB::table('thuonghieu')->get();
         $products=DB::table('sanpham')->get();
-        return view('welcome')->with('list_brands',$list_brands)->with('products',$products);
+        return view('all_products')->with('list_brands',$list_brands)->with('products',$products);
     }
 
     public function sort_low_to_high(){
         $list_brands=DB::table('thuonghieu')->get();
         $products=DB::table('sanpham')->orderBy('dongia_sp','asc')->get();
-        return view('welcome')->with('list_brands',$list_brands)->with('products',$products);
+        return view('all_products')->with('list_brands',$list_brands)->with('products',$products);
     }
 
     public function sort_high_to_low(){
         $list_brands=DB::table('thuonghieu')->get();
         $products=DB::table('sanpham')->orderBy('dongia_sp','desc')->get();
-        return view('welcome')->with('list_brands',$list_brands)->with('products',$products);
+        return view('all_products')->with('list_brands',$list_brands)->with('products',$products);
     }
 
     public function product_detail($product_id){
@@ -34,5 +34,17 @@ class HomeController extends Controller
         // echo "<pre>";
         // print_r($product);
         // echo "</pre>";
+    }
+
+    public function search_product_brand($brand_id){
+        $list_brands=DB::table('thuonghieu')->get();
+        $products=DB::table('sanpham')->where('id_th',$brand_id)->get();
+        return view('search_product_brand')->with('list_brands',$list_brands)->with('products',$products);
+    }
+
+    public function search_product(Request $request){
+        $name_pro=$request->name_pro;
+        $product=DB::table('sanpham')->where('ten_sp','like',"%{$name_pro}%")->get();
+        return view('search_product')->with('product',$product);
     }
 }

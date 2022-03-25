@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,25 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/sort-low-to-high',[HomeController::class,'sort_low_to_high']);
 Route::get('/sort-high-to-low',[HomeController::class,'sort_high_to_low']);
 Route::get('/client-product-detail/{product_id}',[HomeController::class,'product_detail']);
+Route::get('/search-product-brands/{brand_id}',[HomeController::class,'search_product_brand']);
+Route::post('/search-product',[HomeController::class,'search_product']);
+
+//Client
+Route::get('/register-client',[ClientController::class,'register']);
+Route::get('/login-client',[ClientController::class,'login']);
+Route::post('/register-client',[ClientController::class,'store_client']);
+Route::post('/login',[ClientController::class,'handle_login']);
+Route::get('/logout-client',[ClientController::class,'logout']);
+
+//Cart
+Route::post('add-quatity/{product_id}',[CartController::class,'store_cart']);
+Route::get('list-items',[CartController::class,'list_item']);
+Route::post('minus-quantity/{cart_id}',[CartController::class,'minus_quantity']);
+Route::post('plus-quantity/{cart_id}',[CartController::class,'plus_quantity']);
+Route::get('delete-cart/{cart_id}',[CartController::class,'delete_cart']);
+
+//Order
+Route::post('order-item',[OrderController::class,'order']);
 
 //Admin
 Route::get('/admin',[AdminController::class,'index']);

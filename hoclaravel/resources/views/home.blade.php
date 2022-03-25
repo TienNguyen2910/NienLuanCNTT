@@ -4,6 +4,7 @@
 	<title>Tien Bakery </title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/css/bootstrap.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/fontawesome-free-5.15.4/css/all.min.css')}}">
 	<!-- Link CDN Bootstrap -->
@@ -17,25 +18,46 @@
 		<div class="row row1">
 			<div class="col-sm">
 				<ul id="nav">
+					@if(!session()->has('client'))
 					<li><a href="" class="btn btn-danger">Thông báo</a></li>
 					<li><a href="" class="btn btn-danger">Hỗ trợ</a></li>
-					<li><a href="" class="btn btn-danger">Đăng Ký</a></li>
-					<li><a href="" class="btn btn-danger">Đăng Nhập</a></li>
+					<li><a href="{{asset('/register-client')}}" class="btn btn-danger">Đăng Ký</a></li>
+					<li><a href="{{asset('/login-client')}}" class="btn btn-danger">Đăng Nhập</a></li>
+					@else
+					<div class="dropdown">
+						<a class="btn btn-danger dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown">{{Session::get('client')}}</a>
+						<ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenu">
+							<li><a class="dropdown-item" href="{{asset('logout-client')}}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+						</ul>
+					</div>
+					@endif
 				</ul>
 			</div>
 		</div>
 		<div class="row row2">
-			<div class="col-sm-4 ">
+			<div class="col-sm-4">
 				<a href="{{asset('/')}}" class="btn btn-danger" id="title"><i class="fas fa-igloo"></i>Tien Bakery</a>
 			</div>
 			<div class="col-sm-6 search-cart">
-				<div class="form">
-					<i class="fa fa-search"></i>
-					<input type="search" class="form-control form-input" placeholder=" Tìm kiếm sản phẩm ở đây">
-				</div>
+				<form action="{{asset('search-product')}}" method="POST" enctype="multipart/form-data">
+					{{csrf_field()}}
+					<div class="form">
+						<i class="fa fa-search"></i>
+						<input type="search" class="form-control form-input" name="name_pro" placeholder=" Tìm kiếm sản phẩm ở đây">
+						<button type="submit" class="btn btn-danger">Search</button>
+					</div>
+				</form>
 			</div>
 			<div class="col-sm-2 search-cart">
-				<a href="" class="btn btn-danger btn-cart"><i class="fas fa-cart-arrow-down icon"></i></a>
+				<a href="{{asset('list-items')}}" class="btn btn-danger btn-cart"><i class="fas fa-cart-arrow-down icon"></i>
+					<?php 
+						if(session()->has('client')){
+							$id_kh=Session::get('id_client');
+							$count = DB::table('giohang')->where('id_kh',$id_kh)->count();
+							echo "<span>".$count."</span>";
+						}
+					?>
+				</a>
 			</div>
 		</div>
 	</div>

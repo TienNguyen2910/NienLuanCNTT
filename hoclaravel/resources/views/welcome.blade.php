@@ -9,7 +9,7 @@
 			@foreach($list_brands as $key => $lbd)
 			<ul class="content-sidebar">
 				@if($lbd->trangthai_th>0)
-				<li><a href="">{{$lbd->ten_th}}</a></li>
+				<li><a href="{{asset('search-product-brands/'.$lbd->id_th)}}">{{$lbd->ten_th}}</a></li>
 				@endif
 			</ul>
 			@endforeach
@@ -24,8 +24,8 @@
 			<div class="dropdown">
 				<button class="btn btn-light dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown">Giá</button>
 				<ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenu">
-					<li><a class="dropdown-item" href="sort-low-to-high">Giá: từ thấp đến cao</a></li>
-					<li><a class="dropdown-item" href="sort-high-to-low">Giá: từ cao đến thấp</a></li>
+					<li><a class="dropdown-item" href="{{asset('sort-low-to-high')}}">Giá: từ thấp đến cao</a></li>
+					<li><a class="dropdown-item" href="{{asset('sort-high-to-low')}}">Giá: từ cao đến thấp</a></li>
 				</ul>
 			</div>
 			<div class="pagination">
@@ -39,28 +39,7 @@
 			</div>
 		</div>
 		<div class="home-product">
-			<div class="row">
-				@foreach($products as $key => $pro)
-				<div class="col-md-2-4 col-sm-3">
-					<a class="home-product-item" href="{{asset('client-product-detail/'.$pro->id_sp)}}">
-						<div class="item-img" style="background-image:url({{asset('/admin_frontend/img/'.$pro->hinhanh_sp)}})"></div>
-						<h5 class="item-name">{{$pro->ten_sp}}</h5>
-						<div class="item-price">
-							<span class="item-price-old">{{number_format($pro->dongiagoc_sp)}}đ</span>
-							<span class="item-price-current">{{number_format($pro->dongia_sp)}}đ</span>
-						</div>
-						<div class="item_origin">
-							<span class="item_origin-name">TP Hồ Chí Minh</span>
-						</div>
-						<div class="item_sale-off">
-							<?php $ptgiam= 100- (($pro->dongia_sp*100)/$pro->dongiagoc_sp)?>
-							<span class="item-sale-off-percent">{{round($ptgiam,0)}}%</span>
-							<span class="item-sale-off-label">GIẢM</span>
-						</div>
-					</a>
-				</div>
-				@endforeach
-			</div>
+			@yield('row_product')
 		</div>
 	</div>
 </div>

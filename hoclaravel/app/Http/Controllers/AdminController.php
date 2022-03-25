@@ -33,9 +33,7 @@ class AdminController extends Controller
         //$data ->save();
         $result= DB::table('nhanvien')->insert($data);
         if($result){
-            Session::put('username_nv',$result->username_nv);
-            Session::put('id_nv',$result->id_nv);
-            return redirect('dashboard');
+            return redirect('admin_login');
         }
         else{
             return redirect('admin_register');
