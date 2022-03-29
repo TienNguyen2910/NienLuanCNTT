@@ -48,6 +48,7 @@ Route::get('delete-cart/{cart_id}',[CartController::class,'delete_cart']);
 
 //Order
 Route::post('order-item',[OrderController::class,'order']);
+Route::post('/checkout',[OrderController::class,'checkout']);
 
 //Admin
 Route::get('/admin',[AdminController::class,'index']);

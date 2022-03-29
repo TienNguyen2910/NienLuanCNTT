@@ -71,6 +71,7 @@
 		</div>
 	</div>
 </div>
+
 <script>
 	function changeQuatity(temp){
 		var index = document.getElementsByClassName("quantity")[0].value;	//kiểu string
@@ -85,14 +86,11 @@
 		console.log(index);
 		document.getElementsByClassName("quantity")[0].setAttribute("value",index);
 	}
-	var option={
-		animation:true,
-		delay:9000
-	};
+	
  	function myalert(){
 		var myAlert = document.getElementById("toastNotice");
-		var bsAlert= new bootstrap.Toast(myAlert,option);
-		bsAlert.show();
+		var bsAlert= new bootstrap.Toast(myAlert);
+		bsAlert.show(4000);
 	}
 </script>
 @endsection

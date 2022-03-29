@@ -63,10 +63,34 @@
 	</div>
 	<div class="container wrapper">
 		<div class="content">
+			<?php 
+				$thongbao = Session::get('thongbao');
+				if($thongbao){
+					echo "
+					<div class='thongbao' id='notice'>
+						<div class='header-notice'>
+							<strong class='me-auto'>Thông báo</strong>
+							<button type='button' id='close' class='btn-close small'></button>
+						</div>
+						<div class='content'>
+							".$thongbao."
+						</div>
+				  	</div>";
+					  Session::put('thongbao',null);
+				}
+			?>
 			@yield('content')
 		</div>
 	</div>
 	<script src="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/js/jquery-3.5.0.min.js')}}"></script>
+	<script>
+		$("#close").click(function(){
+			// var myAlert = document.getElementById("notice");
+			$("#notice").hide();
+		});
+		$("#notice").show(2000);
+	</script>
+	
 	<script type="text/javascript" src="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/js/popper.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('../public/bootstrap/bootstrap-5.1.1-dist/js/bootstrap.min.js')}}"></script>
 </body>

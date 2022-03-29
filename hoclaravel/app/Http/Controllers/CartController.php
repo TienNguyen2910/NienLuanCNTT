@@ -25,6 +25,7 @@ class CartController extends Controller
                 return view('product_detail')->with('product',$product)->with('image',$image);
             }
             else{
+                $qty = $qty+1;
                 $resu=DB::update('update giohang set soluong= ? where id_sp = ? and id_kh = ?',[$qty,$product_id,$id_kh]);
                 Session::put('mess','Cập nhật số lượng sản phẩm thành công');
                 return view('product_detail')->with('product',$product)->with('image',$image);  

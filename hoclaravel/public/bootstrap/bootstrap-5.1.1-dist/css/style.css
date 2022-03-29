@@ -33,7 +33,9 @@
 #nav > li:hover a,#title:hover{
 	color:rgb(209, 211, 211);
 }
-
+#nav .dropdown-item{
+	min-width: 158px;
+}
 #title{
 	margin-bottom:10px;
 	font-size: 40px;
@@ -432,4 +434,40 @@ h5{
 .table .btn-sub,.table .btn-plus{
     background-color: white;
 	margin: 0;
+}
+	 /* order */
+.order{
+	width: 410px;
+}
+.order .name-item{
+	margin-right: 5px;
+}
+ 	/* mesage when order is success */
+#notice{
+	border: 1px solid rgb(168, 168, 168);
+    min-width: 300px;
+    height: 86px;
+    position: relative;
+    display: inline-block;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 1px 20px 0 rgba(128, 124, 124, 0.5);
+	margin-left: 152px;
+}
+
+#notice .header-notice{
+    position: absolute;
+    min-width: 300px;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid rgb(197, 196, 196);
+}
+#notice .btn-close{
+	right:6px;
+	position: absolute;
+}
+#notice .content{
+	position: absolute;
+    bottom: 14px;
+	min-width: 300px;
+	padding: 0 10px;
 }

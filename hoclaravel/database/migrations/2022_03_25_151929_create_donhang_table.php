@@ -19,8 +19,10 @@ class CreateDonhangTable extends Migration
             $table->foreign('id_kh')->references('id_kh')->on('khachhang');
             $table->dateTimetz('ngaydat_dh');
             $table->string('noigiao_dh');
+            $table->integer('tongtien_dh');
             $table->integer('trangthai_dh');
             $table->integer('huy_dh');
+            $table->integer('pthuctt');
         });
     }
 
