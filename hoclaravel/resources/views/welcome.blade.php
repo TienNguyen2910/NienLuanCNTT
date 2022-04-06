@@ -18,9 +18,9 @@
 	<div class="col-md-10">
 		<div class="home-filter">
 			<span class="home-filter_label">Sắp xếp theo</span>
-			<a class="home-filter_btn btn btn-light" href="">Phổ biến</a>
-			<a class="home-filter_btn btn btn-light" href="">Mới nhất</a>
-			<a class="home-filter_btn btn btn-light" href="">Bán chạy</a>
+			<a class="home-filter_btn btn btn-light" href="{{asset('/')}}">Phổ biến</a>
+			<a class="home-filter_btn btn btn-light" href="{{asset('new-product')}}">Mới nhất</a>
+			<a class="home-filter_btn btn btn-light" href="{{asset('best-sell')}}">Bán chạy</a>
 			<div class="dropdown">
 				<button class="btn btn-light dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown">Giá</button>
 				<ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenu">

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,8 @@ Route::get('/sort-high-to-low',[HomeController::class,'sort_high_to_low']);
 Route::get('/client-product-detail/{product_id}',[HomeController::class,'product_detail']);
 Route::get('/search-product-brands/{brand_id}',[HomeController::class,'search_product_brand']);
 Route::post('/search-product',[HomeController::class,'search_product']);
+Route::get('new-product',[HomeController::class,'new_product']);
+Route::get('best-sell',[HomeController::class,'best_sell']);
 
 //Client
 Route::get('/register-client',[ClientController::class,'register']);
@@ -49,6 +52,9 @@ Route::get('delete-cart/{cart_id}',[CartController::class,'delete_cart']);
 //Order
 Route::post('order-item',[OrderController::class,'order']);
 Route::post('/checkout',[OrderController::class,'checkout']);
+Route::get('purchase-history',[OrderController::class,'purchase_history']);
+Route::get('confirm-order/{order_id}',[OrderController::class,'confirm_order']);
+Route::get('delete-order/{order_id}',[OrderController::class,'delete_order']);
 
 //Admin
 Route::get('/admin',[AdminController::class,'index']);
@@ -58,6 +64,7 @@ Route::get('/admin_register',[AdminController::class,'show_register']);
 Route::post('/admin_register',[AdminController::class,'store_member']);
 Route::post('/admin_login',[AdminController::class,'login']);
 Route::get('/logout',[AdminController::class,'logout']);
+Route::get('revenue',[AdminController::class,'revenue']);
 
 // Brand Product
 Route::get('/brand-product',[BrandProductController::class,'brand']); //list catagory product
@@ -78,3 +85,9 @@ Route::post('/product-detail/{pro_id}',[ProductController::class,'store_prodetai
 Route::get('/edit-product/{product_id}',[ProductController::class,'edit_product']);
 Route::post('/edit-product/{product_id}',[ProductController::class,'update_product']);
 Route::get('/delete-product/{product_id}',[ProductController::class,'delete_product']);
+
+// Admin Manage Order
+Route::get('manage-order',[AdminOrderController::class,'manage_order']);
+Route::get('cancel-order/{order_id}',[AdminOrderController::class,'cancel_order']);
+Route::get('detail-order/{order_id}',[AdminOrderController::class,'detail_order']);
+Route::post('inspect-order/{order_id}',[AdminOrderController::class,'inspect_order']);

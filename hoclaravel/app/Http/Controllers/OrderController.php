@@ -61,4 +61,31 @@ class OrderController extends Controller
         }
         else return redirect('/login-client');
     }
+
+    public function purchase_history(){
+        if(session()->has('client')){
+            $id_kh= Session::get('id_client');
+            $id_dh = DB::table('donhang')->where('id_kh',$id_kh)->get();
+            return view('purchase_history',['id_dh' => $id_dh]);
+        }
+        else return redirect('/login-client');
+    }
+
+    public function confirm_order($order_id){
+        if(Session::has('client')){
+            //echo $order_id;
+            DB::update("update donhang set trangthai_dh = ? where id_dh = ?",[3,$order_id]);
+            return redirect('purchase-history');
+        }
+        else return redirect('login-client');
+    }
+
+    public function delete_order($order_id){
+        if(session()->has('client')){
+            // $result=DB::table('ctdonhang')->where('id_dh',$order_id)->delete();
+            DB::update("update donhang set huy_dh = ? where id_dh = ?",[1,$order_id]);
+            return redirect('purchase-history');
+        }
+        else return redirect('login-client');
+    }
 }

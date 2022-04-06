@@ -16,6 +16,7 @@
 					<div class="dropdown">
 						<a class="btn btn-danger dropdown-toggle" id="dropdownMenu" data-bs-toggle="dropdown">{{Session::get('client')}}</a>
 						<ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenu">
+              <li><a class="dropdown-item" href="{{asset('purchase-history')}}"><i class="fas fa-file-medical-alt"></i> Lịch sử mua hàng</a></li>
 							<li><a class="dropdown-item" href="{{asset('logout-client')}}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
 						</ul>
 					</div>

@@ -23,7 +23,8 @@
     <link href="{{asset('../public/admin_frontend/css/sb-admin-2.min.css')}}" rel="stylesheet">
      <!-- Custom styles for this page -->
     <link href="{{asset('../public/admin_frontend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    <link href="{{asset('../public/admin_frontend/vendor/bootstrap/scss/_close.scss')}}" rel="stylesheet">
+    <link href="{{asset('../public/admin_frontend/vendor/bootstrap/scss/_modal.scss')}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -62,8 +63,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{asset('brand-product')}}">Quản lý Thương Hiệu</a>
                         <a class="collapse-item" href="{{asset('product')}}">Quản lý Sản Phẩm</a>
+                        <a class="collapse-item" href="{{asset('manage-order')}}">Quản lý Đơn Hàng</a>
                         <!-- <a class="collapse-item" href="khachhang.php">Quản lý Khách Hàng</a>
-                        <a class="collapse-item" href="donhang.php">Quản lý Đơn Hàng</a>
                         <a class="collapse-item" href="thuonghieu.php">Quản lý Nhân Viên</a> -->
                     </div>
                 </div>
@@ -71,7 +72,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="doanhthu.php">
+                <a class="nav-link" href="{{asset('revenue')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Báo cáo bán hàng</span></a>
                 </li>

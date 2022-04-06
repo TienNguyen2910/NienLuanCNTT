@@ -33,3 +33,18 @@
 	text-decoration: none;
 	color:#858796;
 }
+
+/* detail order */
+.col-md-4 .list-group-item span,.row .title{
+	color:black;
+}
+
+.col-md-8 .table{
+	margin-top: 6px;
+}
+.col-md-8 #tt{
+	margin:7px;
+}
+.col-md-8 .form-browser{
+	margin-bottom: 10px;
+}

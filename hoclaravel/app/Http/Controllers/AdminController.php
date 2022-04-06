@@ -61,4 +61,11 @@ class AdminController extends Controller
         Session::forget('id_nv',null);
         return redirect('admin');
     }
+
+    public function revenue(){
+        if(Session::has('username_nv')){
+            return view('admin.revenue');
+        }
+        else return redirect('admin');
+    }
 }
