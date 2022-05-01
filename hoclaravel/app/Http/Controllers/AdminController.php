@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Carbon\Carbon;
 use DB,Session;
-
+use App\Models\Donhang;
 session_start();
 
 class AdminController extends Controller
@@ -67,5 +68,33 @@ class AdminController extends Controller
             return view('admin.revenue');
         }
         else return redirect('admin');
+    }
+
+    public function filter_by_date(Request $request){
+        $option = $request->option;
+        switch($option){
+            case 'thang':{
+                $chart= Donhang::select(DB::raw('MONTH(ngaydat_dh) as month, SUM(tongtien_dh) as tongtien'))->groupby('month')->get();
+                foreach($chart as $key => $val){
+                    $chart_data[] = array(
+                        'period' =>'Tháng '.$val->month,
+                        'order' => $val->tongtien
+                    );
+                }
+                break;
+            }
+            case '1nam':{
+                $chart= Donhang::select(DB::raw('YEAR(ngaydat_dh) as year, SUM(tongtien_dh) as tongtien'))->groupby('year')->get();
+                foreach($chart as $key => $val){
+                    $chart_data[] = array(
+                        'period' =>'Năm '.$val->year,
+                        'order' => $val->tongtien
+                    );
+                }
+                break;
+            }
+        }
+        echo $data =json_encode($chart_data);
+        // return view('admin.revenue',compact('idchart'));
     }
 }

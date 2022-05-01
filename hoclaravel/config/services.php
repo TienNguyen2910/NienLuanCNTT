@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => env('35046510598731741'),  //client face của bạn
+        'client_secret' => env('cdab86e056ca1151905ff440af8f2e90'),  //client app service face của bạn
+        'redirect' => env('http://localhost:8080/hoclaravel/public/facebook/callback') //callback trả về
+    ],
+
 ];

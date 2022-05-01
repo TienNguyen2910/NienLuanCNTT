@@ -13,11 +13,20 @@ class OrderController extends Controller
     public function order(Request $request){
         if(session()->has('client')){
             $idsp=$request->idsp;
+            //print_r($idsp);
             return view('order',['idsp'=> $idsp]);
         }
         else return redirect('login-client');
     }
-
+    public function purchase($product_id, Request $request){
+        if(session()->has('client')){
+            $idsp=$product_id;
+            $sl= $request->qty;
+            //echo $sl;
+           return view('order',['idsp'=> $idsp, 'sl' => $sl]);
+        }
+        else return redirect('login-client');
+    }
     public function checkout(Request $request){
         if(session()->has('client')){
             $id_kh = Session::get('id_client');	
@@ -40,12 +49,12 @@ class OrderController extends Controller
                 $idsp = $request->idsp;
                 foreach($idsp as $key => $value){
                     $sql =DB::table('sanpham')->join('giohang','giohang.id_sp','=','sanpham.id_sp')
-                    ->select('soluong','dongia_sp','soluong_sp')->where('sanpham.id_sp',$value)->get();
+                    ->select('soluong','dongia_sp','soluong_sp')->where(['sanpham.id_sp'=>$value, 'id_kh' => $id_kh])->get();
                     foreach($sql as $key => $row){
                         $sl= $row->soluong;
                         $dg=$row->dongia_sp;
                         $cap_sl = $row->soluong_sp - $row->soluong;
-                        //echo "so luong = ".$sl."<br> don gia = ".$dg."<br> cap nhat so luong = ".$cap_sl;
+                        // echo "so luong = ".$sl."<br> don gia = ".$dg."<br> cap nhat so luong = ".$cap_sl;
                         DB::table('ctdonhang')->insert([
                             'id_dh' => $id_dh,
                             'id_sp' => $value,	
@@ -67,6 +76,7 @@ class OrderController extends Controller
             $id_kh= Session::get('id_client');
             $id_dh = DB::table('donhang')->where('id_kh',$id_kh)->get();
             return view('purchase_history',['id_dh' => $id_dh]);
+            // return view('demo');
         }
         else return redirect('/login-client');
     }

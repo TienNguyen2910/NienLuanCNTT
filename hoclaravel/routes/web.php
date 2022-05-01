@@ -42,15 +42,19 @@ Route::post('/register-client',[ClientController::class,'store_client']);
 Route::post('/login',[ClientController::class,'handle_login']);
 Route::get('/logout-client',[ClientController::class,'logout']);
 
+Route::get('/login-facebook',[ClientController::class,'login_facebook']);
+Route::get('/facebook/callback',[ClientController::class,'callback_facebook']);
+
 //Cart
 Route::post('add-quatity/{product_id}',[CartController::class,'store_cart']);
 Route::get('list-items',[CartController::class,'list_item']);
-Route::post('minus-quantity/{cart_id}',[CartController::class,'minus_quantity']);
-Route::post('plus-quantity/{cart_id}',[CartController::class,'plus_quantity']);
+Route::get('minus-quantity/{cart_id}',[CartController::class,'minus_quantity']);
+Route::get('plus-quantity/{cart_id}',[CartController::class,'plus_quantity']);
 Route::get('delete-cart/{cart_id}',[CartController::class,'delete_cart']);
 
 //Order
 Route::post('order-item',[OrderController::class,'order']);
+Route::post('purchase/{product_id}',[OrderController::class,'purchase']);
 Route::post('/checkout',[OrderController::class,'checkout']);
 Route::get('purchase-history',[OrderController::class,'purchase_history']);
 Route::get('confirm-order/{order_id}',[OrderController::class,'confirm_order']);
@@ -65,6 +69,7 @@ Route::post('/admin_register',[AdminController::class,'store_member']);
 Route::post('/admin_login',[AdminController::class,'login']);
 Route::get('/logout',[AdminController::class,'logout']);
 Route::get('revenue',[AdminController::class,'revenue']);
+Route::get('/filter-by-date',[AdminController::class,'filter_by_date']);
 
 // Brand Product
 Route::get('/brand-product',[BrandProductController::class,'brand']); //list catagory product

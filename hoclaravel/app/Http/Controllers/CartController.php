@@ -15,7 +15,7 @@ class CartController extends Controller
             $qty=$request->qty;
             $id_kh=Session::get('id_client');
             $product=DB::table('sanpham')->join('motasp','sanpham.id_sp','=','motasp.id_sp')
-                ->select('sanpham.id_sp','ten_sp','dongia_sp','dongiagoc_sp','hinhanh_sp','thanhphan_mt','khoiluong_mt','hdsd_mt','hansd_mt')->where('sanpham.id_sp',$product_id)->get();
+                ->select('sanpham.id_sp','ten_sp','soluong_sp','dongia_sp','dongiagoc_sp','hinhanh_sp','thanhphan_mt','khoiluong_mt','hdsd_mt','hansd_mt')->where('sanpham.id_sp',$product_id)->get();
             $image=DB::table('hinhanhmotasp')->where('id_sp',$product_id)->get();
 
             $res=DB::table('giohang')->where([['id_kh',$id_kh] ,['id_sp',$product_id]])->first();
@@ -40,7 +40,7 @@ class CartController extends Controller
         if(session()->has('client')){
             $id_kh = Session::get('id_client');
             $item_cart=DB::table('giohang')->join('sanpham','sanpham.id_sp','=','giohang.id_sp')
-            ->select('id_gh','giohang.id_sp','ten_sp','soluong','dongia_sp','hinhanh_sp')->get();
+            ->select('id_gh','giohang.id_sp','ten_sp','soluong','dongia_sp','hinhanh_sp')->where('id_kh',$id_kh)->get();
             return view('list_items_in_cart',['item_cart'=> $item_cart]);
         }
         else return redirect('login-client');
@@ -48,25 +48,29 @@ class CartController extends Controller
 
     public function minus_quantity(Request $request,$cart_id){
         if(session()->has('client')){
+            $id_kh=Session::get('id_client');
             $qty=$request->qty;
-            //echo $qty.",id gio hang = ".$cart_id."<br>";
+            // echo $qty.",id gio hang = ".$cart_id."<br>";
             $qty= $qty-1;
-            //echo "sau khi tru : ".$qty;
-            $result=DB::update('update giohang set soluong = ? where id_gh = ? ',[$qty,$cart_id]);
+            // echo "sau khi tru : ".$qty;
+            $result=DB::update('update giohang set soluong = ? where id_gh = ? and id_kh = ?',[$qty,$cart_id,$id_kh]);
             return redirect('list-items');
         }
         else return redirect('login-client');
     }
 
     public function plus_quantity(Request $request,$cart_id){
+        $id_kh=Session::get('id_client');
+        //echo $id_kh;
         if(session()->has('client')){
             $qty=$request->qty;
             //echo $qty."<br>";
             $qty= $qty + 1;
             //echo "sau khi cong : ".$qty;
-            $result=DB::update('update giohang set soluong = ? where id_gh = ? ',[$qty,$cart_id]);
+            $result=DB::update('update giohang set soluong = ? where id_gh = ? and id_kh = ?',[$qty,$cart_id,$id_kh]);
             return redirect('list-items');   
         }
+        else return redirect('login-client');
     }
 
     public function delete_cart($cart_id){

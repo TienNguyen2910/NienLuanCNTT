@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-md-8"><a href="" class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</a></div>
+                    <div class="col-md-8"><a href="{{asset('login-facebook')}}" class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</a></div>
                 </div>
             </div>
         </div>

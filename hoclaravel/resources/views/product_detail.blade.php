@@ -1,8 +1,8 @@
 @extends('home')
 @section('content')
 <div class="container mt-5" style="background-color:white">
+    @foreach($product as $key => $pro)
     <div class="row row-1">
-        @foreach($product as $key => $pro)
         <div class="col-sm-6" style="text-align:center">
             <img src="{{asset('/admin_frontend/img/'.$pro->hinhanh_sp)}}" alt="Hình ảnh sản phẩm">
         </div>
@@ -35,12 +35,15 @@
 					->groupBy('ctdonhang.id_sp')->get();
 				?>
                 @foreach($result as $key =>$value)
-					<span>{{$pro->soluong_sp - $value->tongsl}} sản phẩm có sẵn</span>
-                @endforeach
-                
+                <?php $slton= $pro->soluong_sp - $value->tongsl; ?>
+                @if($slton < 0) <span>{{$pro->soluong_sp}} sản phẩm có sẵn</span>
+                    @else
+                    <span>{{$slton}} sản phẩm có sẵn</span>
+                    @endif
+                    @endforeach
+
             </div>
         </div>
-        @endforeach
     </div>
     <div class="row row-2">
         @foreach($image as $key =>$img)
@@ -49,39 +52,49 @@
         </div>
         @endforeach
         <div class="col-md-6">
+            <div class="link-cart-product">
+                <button data-bs-toggle="modal" data-bs-target="#expModal" type="submit" form="form1"
+                    class="btn btn-info"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                <button type="submit" form="form1" formaction="{{asset('purchase/'.$pro->id_sp)}}"
+                    class="btn btn-danger">Mua hàng</a>
+            </div>
             <?php $message= Session::get('message'); 
 				$mess = Session::get('mess'); 
 			?>
-            @if($message)
-            <div class="toast" id="toastNotice">
-                <div class="toast-header">
-                    <strong class="me-auto">Thông báo</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    {{$message}}
-                    <?php Session::put('message',null); ?>
+            @if(isset($message))
+            <div class="modal fade" id="expModal" tabindex="-1" aria-labelledby="expModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="expModalLabel">Thông báo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{$message}}
+                            <?php Session::put('message',null); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             @elseif(!empty($mess))
-            <div class="toast" id="toastNotice">
-                <div class="toast-header">
-                    <strong class="me-auto">Thông báo</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    {{$mess}}
-                    <?php Session::put('mess',null); ?>
+            <div class="modal fade" id="expModal" tabindex="-1" aria-labelledby="expModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="expModalLabel">Thông báo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{$mess}}
+                            <?php Session::put('mess',null); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             @endif
-            <div class="link-cart-product">
-                <button id="toastbtn" onclick="myalert()" type="submit" form="form1" class="btn btn-info"><i
-                        class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
-                <a href="" class="btn btn-danger">Mua hàng</a>
-            </div>
         </div>
     </div>
+    @endforeach
 </div>
 
 <script>
@@ -98,11 +111,11 @@ function changeQuatity(temp) {
     console.log(index);
     document.getElementsByClassName("quantity")[0].setAttribute("value", index);
 }
-
-function myalert() {
-    var myAlert = document.getElementById("toastNotice");
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show(4000);
-}
+//$(#expModal).show(2000);
+// function myalert() {
+//     var myAlert = document.getElementById("expModal");
+//     var bsAlert = new bootstrap.Modal(myAlert);
+//     bsAlert.show(4000);
+// }
 </script>
 @endsection

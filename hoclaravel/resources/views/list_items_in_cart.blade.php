@@ -33,9 +33,9 @@
                     <td>
                         <div class="btn-product">
                             <button type="submit" form="form{{$count}}" name="minus" class=" btn btn-sub" > <i class="fas fa-minus"></i> </button>
-                            <form action="{{asset('minus-quantity/'.$item->id_gh)}}" id="form{{$count}}" method="POST" class="form-quantity">
+                            <form action="{{asset('minus-quantity/'.$item->id_gh)}}" id="form{{$count}}" method="GET" class="form-quantity">
                             {{csrf_field()}}
-                                <input type="number" min="1" name="qty" class="quantity" value="{{$item->soluong}}">
+                                <input type="number" min="1" form="form{{$count}}" name="qty" class="quantity" value="{{$item->soluong}}">
                             </form>
                             <button type="submit" form="form{{$count}}" formaction="{{asset('plus-quantity/'.$item->id_gh)}}" name="plus" class=" btn btn-plus"><i class="fas fa-plus"></i></button>
                         </div>

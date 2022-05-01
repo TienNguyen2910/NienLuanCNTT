@@ -77,7 +77,7 @@
                             </form>
                             @endforeach
                             <div class="text-center">
-                                <a class="small" href="dashboard">Back to homepage!</a>
+                                <a class="small" href="{{asset('/dashboard')}}">Back to homepage!</a>
                             </div>
                         </div>
                     </div>

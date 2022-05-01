@@ -13,6 +13,7 @@
                         <th>Mã hàng</th>
                         <th>Họ tên khách hàng</th>
                         <th>Ngày đặt</th>
+                        <th>Thành tiền</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết đơn</th>
                         <th>Hủy đơn</th>
@@ -24,6 +25,7 @@
                         <th>Mã hàng</th>
                         <th>Họ tên khách hàng</th>
                         <th>Ngày đặt</th>
+                        <th>Thành tiền</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết đơn</th>
                         <th>Hủy đơn</th>
@@ -39,23 +41,27 @@
                         <?php
                             switch ($order->trangthai_dh) {
                                 case '0':
+                                    echo "<td>".number_format($order->tongtien_dh)."đ</td>";
                                     echo"<td style='color:#006400;'> Đơn mới tạo</td>";
                                     break;  
                                 case '1':
+                                    echo "<td>".number_format($order->tongtien_dh)."đ</td>";
                                     echo"<td style='color: #FF8C00'> Đang được xử lý</td>";
                                     break;
                                 case '2':
+                                    echo "<td>".number_format($order->tongtien_dh)."đ</td>";
                                     echo"<td style='color: #2715bd'> Đơn đang giao</td>";
                                     break;
                                 case '3':
+                                    echo "<td>".number_format($order->tongtien_dh)."đ</td>";
                                     echo"<td style='color:#FF1493;'>Khách đã nhận hàng</td>";
                                     break;
                                 default :
-                                    echo "<td style='color:red;'>Đã hủy</td>";
+                                    echo "<td style='color:red;'>0 đ</td>
+                                    <td style='color:red;'>Đã hủy</td>";
                                     break;
                             }
                          ?>
-                        </td>
                         @if($order->huy_dh !=0)<td></td>
                         <td style="color: OrangeRed;font-weight:bold">Yêu cầu hủy đơn</td>
                         @else

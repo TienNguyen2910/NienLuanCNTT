@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,22 +12,41 @@
     <title> Admin Tien Bakery</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('../public/admin_frontend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('../public/admin_frontend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet"
+        type="text/css">
     <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
-   <!--  css format for website -->
-   <link rel="stylesheet" type="text/css" href="{{asset('../public/admin_frontend/css/style.css')}}">
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!--  css format for website -->
+    <link rel="stylesheet" type="text/css" href="{{asset('../public/admin_frontend/css/style.css')}}">
     <!-- Custom styles for this template-->
     <link href="{{asset('../public/admin_frontend/css/sb-admin-2.min.css')}}" rel="stylesheet">
-     <!-- Custom styles for this page -->
+    <!-- Custom styles for this page -->
     <link href="{{asset('../public/admin_frontend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-    <link href="{{asset('../public/admin_frontend/vendor/bootstrap/scss/_close.scss')}}" rel="stylesheet">
-    <link href="{{asset('../public/admin_frontend/vendor/bootstrap/scss/_modal.scss')}}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('../public/admin_frontend/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('../public/admin_frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('../public/admin_frontend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{asset('../public/admin_frontend/js/sb-admin-2.min.js')}}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <!-- Page level plugins -->
+    <!-- <script src="{{asset('../public/admin_frontend/vendor/chart.js/Chart.min.js')}}"></script> -->
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="{{asset('../public/admin_frontend/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('../public/admin_frontend/js/demo/chart-pie-demo.js')}}"></script> -->
+
 </head>
 
 <body id="page-top">
-	<!-- Page Wrapper -->
+    <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -50,12 +68,12 @@
                 <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Trang chủ</span></a>
-                </li>
+            </li>
 
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#quanly"
-                    aria-expanded="true" aria-controls="quanly">
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#quanly" aria-expanded="true"
+                    aria-controls="quanly">
                     <i class="fas fa-edit"></i>
                     <span>Quản lý</span>
                 </a>
@@ -75,11 +93,11 @@
                 <a class="nav-link" href="{{asset('revenue')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Báo cáo bán hàng</span></a>
-                </li>
+            </li>
 
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Tài khoản</span>
@@ -106,9 +124,12 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="{{asset('../public/admin_frontend/img/undraw_rocket.svg')}}" alt="...">
-                <p class="text-center mb-2"><strong>Admin Tien Bakery Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+                <img class="sidebar-card-illustration mb-2"
+                    src="{{asset('../public/admin_frontend/img/undraw_rocket.svg')}}" alt="...">
+                <p class="text-center mb-2"><strong>Admin Tien Bakery Pro</strong> is packed with premium features,
+                    components, and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
+                    Pro!</a>
             </div>
         </ul>
         <!-- End of Sidebar -->
@@ -119,24 +140,26 @@
             <!-- Main Content -->
             <div id="content">
 
-              <!-- Topbar -->
-                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600"><?php echo Session::get('username_nv'); ?></span>
+                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600"><?php echo Session::get('username_nv'); ?></span>
                                 <img class="img-profile rounded-circle"
-                                src="{{asset('../public/admin_frontend/img/undraw_profile.svg')}}">
+                                    src="{{asset('../public/admin_frontend/img/undraw_profile.svg')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{asset('logout')}}" data-toggle="modal" data-target="#logoutModal">
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{asset('logout')}}" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -144,10 +167,10 @@
                         </li>
                     </ul>
                 </nav>
-                    <!-- End of Topbar -->
-                    @yield('admin_content')
-            </div> 
-                <!-- End of Main Content -->
+                <!-- End of Topbar -->
+                @yield('admin_content')
+            </div>
+            <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -160,23 +183,6 @@
         </div><!-- End of Content Wrapper -->
     </div><!-- End of Page Wrapper -->
 
-<!-- Bootstrap core JavaScript-->
-<script src="{{asset('../public/admin_frontend/vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('../public/admin_frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="{{asset('../public/admin_frontend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="{{asset('../public/admin_frontend/js/sb-admin-2.min.js')}}"></script>
-
-<!-- Page level plugins -->
-<script src="{{asset('../public/admin_frontend/vendor/chart.js/Chart.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('../public/admin_frontend/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('../public/admin_frontend/js/demo/chart-pie-demo.js')}}"></script>
-
-
 </body>
+
 </html>
